@@ -33,11 +33,10 @@ public class WhiskyController {
         if (year != null){
             return new ResponseEntity<>(whiskyRepository.findByYear(year), HttpStatus.OK);
         }
-
         if (region != null){
-            List<Distillery> foundDistilleries = distilleryRepository.findByRegion(region);
-            foundDistilleries
+            return new ResponseEntity<>(whiskyRepository.findWhiskyByDistilleryRegion(region), HttpStatus.OK);
         }
+
         return new ResponseEntity<>(whiskyRepository.findAll(), HttpStatus.OK);
 
     }
